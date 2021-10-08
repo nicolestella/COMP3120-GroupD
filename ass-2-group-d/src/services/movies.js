@@ -18,13 +18,3 @@ const movie = (movieid) => {
 }
 
 export default { movies, movie }
-
-/*
-axios
-	.get(
-		'https://api.themoviedb.org/3/movie/top_rated?api_key=d376228a124d9077ef3238a86c282792&language=en-US&page=1%27',
-	)
-	.then(function (responce) {
-		console.log(responce.data.results)
-	})
-*/
