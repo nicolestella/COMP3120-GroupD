@@ -14,7 +14,23 @@ import {
 } from 'react-router-dom'
 
 function App () {
-	return <div className="App">Heelloo</div>
+	return (
+		<Router>
+			<Switch>
+				<Route path="/profile/:id">
+					<Profile/>
+				</Route>
+
+				<Route path="/movie/:id">
+					<MovieDetails/>
+				</Route>
+
+				<Route path="/">
+					<Home/>
+				</Route>
+			</Switch>
+		</Router>
+	)
 }
 
 export default App
