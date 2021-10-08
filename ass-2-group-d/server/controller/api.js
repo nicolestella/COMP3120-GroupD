@@ -16,5 +16,4 @@ apiRouter.put('/api/info/:userid/:movieid', (request, response) => {})
 
 apiRouter.delete('/api/info/:userid/:movieid', (request, response) => {})
 
-
 module.exports = apiRouter
