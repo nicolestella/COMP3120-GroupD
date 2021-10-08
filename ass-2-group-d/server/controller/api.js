@@ -6,10 +6,6 @@ apiRouter.post('/api/login', (request, response) => {})
 
 apiRouter.post('/api/register', (request, response) => {})
 
-apiRouter.get('/api/movies', (request, response) => {})
-
-apiRouter.get('/api/movies/:movieid', (request, response) => {})
-
 apiRouter.get('/api/info/:userid', (request, response) => {})
 
 apiRouter.get('/api/info/:userid:/movieid', (request, response) => {})
