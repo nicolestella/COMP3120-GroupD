@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = '/api/info'
+const baseURL = '/api/reviews'
 
 const reviews = () => {
 

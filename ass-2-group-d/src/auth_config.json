@@ -1,0 +1,6 @@
+{
+    "domain": "dev-bew1sqpc.us.auth0.com",
+    "clientId": "HWREGc2VkluiyH5u2TElnR3HACQzZq7A",
+    "audience": "https://dev-bew1sqpc.us.auth0.com/api/v2/",
+    "scope": "read:current_user update:current_user_metadata"
+}
