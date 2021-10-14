@@ -3,9 +3,9 @@ import React, {
 	useEffect,
 } from 'react'
 import './App.css'
-import Home from './pages/HomePage'
-import Profile from './pages/ProfilePage'
-import MovieDetails from './pages/MovieDetailsPage'
+import Home from './pages/Home'
+import Profile from './pages/Profile'
+import MovieDetails from './pages/MovieDetails'
 import {
 	BrowserRouter as Router,
 	Switch,
