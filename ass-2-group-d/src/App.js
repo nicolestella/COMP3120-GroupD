@@ -3,9 +3,9 @@ import React, {
 	useEffect,
 } from 'react'
 import './App.css'
-import Home from './pages/HomePage'
-import Profile from './pages/ProfilePage'
-import MovieDetails from './pages/MovieDetailsPage'
+import Home from './pages/Home'
+import Profile from './pages/Profile'
+import MovieDetails from './pages/MovieDetails'
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -20,7 +20,7 @@ function App () {
 
 	return (
 		<Router>
-			{!isAuthenticated && (
+			{/* {!isAuthenticated && (
 				<AuthButton text="Login" eventHandler={() => loginWithRedirect()}/>
 			)}
 			{isAuthenticated && (
@@ -28,7 +28,7 @@ function App () {
 					<h5> {user.name} is Logged in~! </h5>
 					<AuthButton text="Logout" eventHandler={() => logout()}/>
 				</div>
-			)}
+			)} */}
 			<Switch>
 				<Route path="/profile/:id">
 					<Profile/>
