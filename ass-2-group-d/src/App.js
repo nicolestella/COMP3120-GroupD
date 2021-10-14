@@ -20,7 +20,7 @@ function App () {
 
 	return (
 		<Router>
-			{!isAuthenticated && (
+			{/* {!isAuthenticated && (
 				<AuthButton text="Login" eventHandler={() => loginWithRedirect()}/>
 			)}
 			{isAuthenticated && (
@@ -28,7 +28,7 @@ function App () {
 					<h5> {user.name} is Logged in~! </h5>
 					<AuthButton text="Logout" eventHandler={() => logout()}/>
 				</div>
-			)}
+			)} */}
 			<Switch>
 				<Route path="/profile/:id">
 					<Profile/>
