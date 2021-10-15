@@ -12,11 +12,10 @@ import {
 	Route,
 	Link,
 } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
 import AuthButton from './components/AuthButton'
 
 function App () {
-	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+	const imgURL = 'https://image.tmdb.org/t/p/w500'
 
 	return (
 		<Router>
@@ -39,7 +38,7 @@ function App () {
 				</Route>
 
 				<Route path="/">
-					<Home/>
+					<Home imgURL={imgURL} />
 				</Route>
 			</Switch>
 		</Router>
