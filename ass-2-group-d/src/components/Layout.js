@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import PropTypes from 'prop-types'
 // import styling
 import theme from '../config/theme'
@@ -9,10 +10,15 @@ import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 // import icons
 import SearchIcon from '@mui/icons-material/Search'
+import LogoutIcon from '@mui/icons-material/Logout'
 
 const Layout = ({ children }) => {
+	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+
 	return (
 		<div style={{
 			backgroundColor: theme.palette.background,
@@ -56,7 +62,31 @@ const Layout = ({ children }) => {
 					/>
 
 					{/* User avatar */}
-					<Avatar>AB</Avatar>
+					{isAuthenticated
+						? (
+							<Stack direction="row" spacing={1}>
+								<Avatar
+									component={Button}
+									sx={{ padding: 0, minWidth: '0px' }}
+								>
+									{user.given_name.charAt(0)}{user.family_name.charAt(0)}
+								</Avatar>
+
+								<IconButton onClick={() => logout()} color="primary">
+									<LogoutIcon />
+								</IconButton>
+
+							</Stack>
+						)
+						: (
+							<Button
+								variant="contained"
+								onClick={() => loginWithRedirect()}
+							>
+								Login
+							</Button>
+						)}
+
 				</Toolbar>
 			</AppBar>
 

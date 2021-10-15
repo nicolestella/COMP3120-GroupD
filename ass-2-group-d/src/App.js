@@ -12,12 +12,11 @@ import {
 	Route,
 	Link,
 } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
 import AuthButton from './components/AuthButton'
 import movies from './services/movies'
 
 function App () {
-	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+	const imgURL = 'https://image.tmdb.org/t/p/w500'
 
 	function getMovies () {
 		movies.movies().then(
@@ -54,7 +53,7 @@ function App () {
 				</Route>
 
 				<Route path="/">
-					<Home/>
+					<Home imgURL={imgURL} />
 				</Route>
 			</Switch>
 		</Router>

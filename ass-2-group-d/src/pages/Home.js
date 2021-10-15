@@ -14,56 +14,43 @@ import Stack from '@mui/material/Stack'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 // import custom components
 import Layout from '../components/Layout'
+import Movies from '../services/movies'
 
-const Home = ({ numCards }) => {
+const Home = ({ imgURL }) => {
 	const [movies, setMovies] = React.useState([])
 
 	React.useEffect(() => {
-		const tempMovies = []
-		for (let i = 0; i < 50; i++) {
-			const temp = {
-				id: i,
-				title: 'Movie Title',
-				img: `https://source.unsplash.com/featured/?nature?sig=${Math.floor(Math.random() * i)}`,
-			}
-
-			tempMovies.push(temp)
-		}
-		setMovies(tempMovies)
+		Movies.movies().then(data => setMovies(data))
 	}, [])
+
 	return (
 		<Layout>
+			{console.log(movies)}
 			<Grid container spacing={4} sx={{ padding: theme.spacing(4) }}>
 				{movies.map((movie) => (
 					<Grid
 						key={movie.id}
 						item
 						xs={6} sm={4} md={3} lg={2}
-						sx={{
-							height: '450px',
-							[theme.breakpoints.down('sm')]: {
-								height: '400px',
-							},
-						}}
 					>
 						<Stack
 							sx={{ width: '100%', height: '100%' }}
-							justifyContent="center"
 							alignItems="center"
 						>
 							{/* Movie poster */}
 							<Card
-								sx={{ width: '100%', height: '100%' }}
+								sx={{
+									width: '100%',
+									aspectRatio: '0.66667',
+								}}
 							>
 								<CardActionArea
 									sx={{ width: '100%', height: '100%' }}
 								>
 									<Image
-										src={movie.img}
-										style={{
-											height: '100%',
-										}}
-										cover
+										src={`${imgURL}/${movie.poster_path}`}
+										style={{ position: 'initial' }}
+										// cover
 									/>
 								</CardActionArea>
 							</Card>
@@ -96,7 +83,7 @@ const Home = ({ numCards }) => {
 }
 
 Home.propTypes = {
-	numCards: PropTypes.number,
+	imgURL: PropTypes.string.isRequired,
 }
 
 export default Home
