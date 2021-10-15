@@ -6,7 +6,7 @@ const movies = () => {
 		.get(
 			baseURL + '/top_rated?api_key=d376228a124d9077ef3238a86c282792&language=en-US&page=1%27',
 		)
-		.then(responce => responce.data.results)
+		.then(response => response.data.results)
 }
 
 const movie = (movieid) => {
@@ -14,7 +14,7 @@ const movie = (movieid) => {
 		.get(
 			baseURL + '/' + movieid + '?api_key=d376228a124d9077ef3238a86c282792&language=en-US',
 		)
-		.then(responce => responce.data.results)
+		.then(response => response.data.results)
 }
 
 export default { movies, movie }

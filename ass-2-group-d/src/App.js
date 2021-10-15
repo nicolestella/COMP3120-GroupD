@@ -14,9 +14,24 @@ import {
 } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import AuthButton from './components/AuthButton'
+import movies from './services/movies'
 
 function App () {
 	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+
+	function getMovies () {
+		movies.movies().then(
+			data => {
+				return data
+			})
+	}
+
+	function getMovie (movieId) {
+		movies.movie(movieId).then(
+			data => {
+				return data
+			})
+	}
 
 	return (
 		<Router>
