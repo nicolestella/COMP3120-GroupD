@@ -40,17 +40,8 @@ const Home = ({ imgURL }) => {
 							{/* Movie poster */}
 							<Card
 								sx={{
-									height: '450px',
 									width: '100%',
-									[theme.breakpoints.down('lg')]: {
-										height: '400px',
-									},
-									[theme.breakpoints.down('md')]: {
-										height: '400px',
-									},
-									[theme.breakpoints.down('sm')]: {
-										height: '350px',
-									},
+									aspectRatio: '0.66667',
 								}}
 							>
 								<CardActionArea
@@ -59,7 +50,6 @@ const Home = ({ imgURL }) => {
 									<Image
 										src={`${imgURL}/${movie.poster_path}`}
 										style={{ position: 'initial' }}
-										imageStyle={{ height: '450px' }}
 										// cover
 									/>
 								</CardActionArea>
