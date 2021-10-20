@@ -18,25 +18,25 @@ import Movies from '../services/movies'
 
 const Home = ({ imgURL }) => {
 	const [movies, setMovies] = React.useState([])
+	const [filter, setFilter] = React.useState(null)
 
 	React.useEffect(() => {
-		Movies.movies().then(data => setMovies(data))
+		Movies.movies().then((data) => setMovies(data))
 	}, [])
 
 	return (
-		<Layout>
+		<Layout setFilter={(e) => setFilter(e)}>
 			{console.log(movies)}
 			<Grid container spacing={4} sx={{ padding: theme.spacing(4) }}>
-				{movies.map((movie) => (
-					<Grid
-						key={movie.id}
-						item
-						xs={6} sm={4} md={3} lg={2}
-					>
-						<Stack
-							sx={{ width: '100%', height: '100%' }}
-							alignItems="center"
-						>
+				{movies.filter((movie) => {
+					if (filter !== null && filter !== '') {
+						return movie.title.toLowerCase().includes(filter.toLowerCase())
+					} else {
+						return true
+					}
+				}).map((movie) => (
+					<Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
+						<Stack sx={{ width: '100%', height: '100%' }} alignItems="center">
 							{/* Movie poster */}
 							<Card
 								sx={{
@@ -44,9 +44,7 @@ const Home = ({ imgURL }) => {
 									aspectRatio: '0.66667',
 								}}
 							>
-								<CardActionArea
-									sx={{ width: '100%', height: '100%' }}
-								>
+								<CardActionArea sx={{ width: '100%', height: '100%' }}>
 									<Image
 										src={`${imgURL}/${movie.poster_path}`}
 										style={{ position: 'initial' }}
@@ -62,7 +60,7 @@ const Home = ({ imgURL }) => {
 									variant="body3"
 									sx={{ marginLeft: theme.spacing(2) }}
 								>
-								Add to watchlist
+									Add to watchlist
 								</Typography>
 							</Button>
 

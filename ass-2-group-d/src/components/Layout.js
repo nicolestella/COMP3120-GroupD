@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import PropTypes from 'prop-types'
 // import styling
@@ -16,8 +16,12 @@ import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, setFilter }) => {
 	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
+
+	const handleSearchChange = (e) => {
+		setFilter(e.target.value)
+	}
 
 	return (
 		<div style={{
@@ -47,6 +51,7 @@ const Layout = ({ children }) => {
 
 					{/* Search bar */}
 					<TextField
+						onChange={handleSearchChange}
 						label={
 							<Stack direction="row" spacing={1}>
 								<SearchIcon />
@@ -97,6 +102,7 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
 	children: PropTypes.node,
+	setFilter: PropTypes.func,
 }
 
 export default Layout
