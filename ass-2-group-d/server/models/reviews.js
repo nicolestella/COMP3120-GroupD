@@ -12,9 +12,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const reviewSchema = new mongoose.Schema({
 	userid: String,
-	movieid: String,
-	rating: Number,
-	review: String,
+	movies: [{ movieid: String, rating: Number, review: String }],
 })
 
 reviewSchema.set('toJSON', {
