@@ -18,7 +18,6 @@ import SearchIcon from '@mui/icons-material/Search'
 import LogoutIcon from '@mui/icons-material/Logout'
 
 const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
-
 	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
 	const handleSearchChange = (e) => {
@@ -99,7 +98,9 @@ const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
 				</Toolbar>
 			</AppBar>
 
-			{children}
+			<div style={{ padding: theme.spacing(5) }}>
+				{children}
+			</div>
 		</div>
 	)
 }
