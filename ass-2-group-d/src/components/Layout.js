@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 // import styling
 import theme from '../config/theme'
@@ -16,7 +17,8 @@ import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-const Layout = ({ children, setFilter }) => {
+const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
+
 	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
 	const handleSearchChange = (e) => {
@@ -43,8 +45,9 @@ const Layout = ({ children, setFilter }) => {
 					{/* Website title */}
 					<Typography
 						variant="h4"
-						component="div"
-						sx={{ flexGrow: 1 }}
+						component={Link}
+						to={!homeDisabled && '/'}
+						sx={{ flexGrow: 1, textDecoration: 'none', color: '#000' }}
 					>
             name
 					</Typography>
@@ -71,8 +74,9 @@ const Layout = ({ children, setFilter }) => {
 						? (
 							<Stack direction="row" spacing={1}>
 								<Avatar
-									component={Button}
-									sx={{ padding: 0, minWidth: '0px' }}
+									component={Link}
+									to={!profileDisabled && '/profile'}
+									sx={{ padding: 0, minWidth: '0px', textDecoration: 'none' }}
 								>
 									{user.given_name.charAt(0)}{user.family_name.charAt(0)}
 								</Avatar>
@@ -102,6 +106,8 @@ const Layout = ({ children, setFilter }) => {
 
 Layout.propTypes = {
 	children: PropTypes.node,
+	homeDisabled: PropTypes.bool,
+	profileDisabled: PropTypes.bool,
 	setFilter: PropTypes.func,
 }
 
