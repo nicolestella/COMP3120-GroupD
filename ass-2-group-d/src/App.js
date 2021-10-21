@@ -35,7 +35,7 @@ function App () {
 				</Route>
 
 				<Route path="/movie/:id">
-					<MovieDetails/>
+					<MovieDetails imgURL={imgURL}/>
 				</Route>
 
 				<Route path="/">
