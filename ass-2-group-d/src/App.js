@@ -1,7 +1,4 @@
-import React, {
-	useState,
-	useEffect,
-} from 'react'
+import React from 'react'
 import './App.css'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
@@ -10,9 +7,7 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Link,
 } from 'react-router-dom'
-import AuthButton from './components/AuthButton'
 import movies from './services/movies'
 
 function App () {
@@ -34,18 +29,9 @@ function App () {
 
 	return (
 		<Router>
-			{/* {!isAuthenticated && (
-				<AuthButton text="Login" eventHandler={() => loginWithRedirect()}/>
-			)}
-			{isAuthenticated && (
-				<div>
-					<h5> {user.name} is Logged in~! </h5>
-					<AuthButton text="Logout" eventHandler={() => logout()}/>
-				</div>
-			)} */}
 			<Switch>
-				<Route path="/profile/:id">
-					<Profile/>
+				<Route path="/profile">
+					<Profile imgURL={imgURL} />
 				</Route>
 
 				<Route path="/movie/:id">
