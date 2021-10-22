@@ -9,6 +9,7 @@ import theme from '../config/theme'
 import Layout from '../components/Layout'
 import MovieCard from '../components/MovieCard'
 import Movie from '../services/movies'
+import Review from '../services/reviews'
 
 const watchedList = [526702, 496243, 592350, 424, 724089]
 
@@ -16,13 +17,11 @@ const Profile = ({ imgURL }) => {
 	const [movies, setMovies] = React.useState([])
 
 	React.useEffect(() => {
-		const temp = movies
-		watchedList.forEach(id => {
-			Movie.movie(id).then(data => {
-				temp.push(data)
-			})
-		})
-		setMovies(temp)
+		Review.getWatchlist('nicole.stella')
+			.then(data =>
+				data[0].movies.map(m => Movie.movie(m.movieid)
+					.then(data =>
+						setMovies(movies => [...movies, data]))))
 	}, [])
 
 	return (
