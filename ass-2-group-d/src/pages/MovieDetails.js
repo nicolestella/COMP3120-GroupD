@@ -10,14 +10,43 @@ import Chip from '@mui/material/Chip'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Card from '@mui/material/Card'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+// import icons
+import AddCircleIcon from '@mui/icons-material/AddCircle'
+import InfoIcon from '@mui/icons-material/Info'
+import GroupIcon from '@mui/icons-material/Group'
+import MovieIcon from '@mui/icons-material/Movie'
+import ChatIcon from '@mui/icons-material/Chat'
 // import custom components
 import theme from '../config/theme'
-import Layout from '../components/Layout'
 import Movie from '../services/movies'
+import Layout from '../components/Layout'
+import InfoTab from '../components/movieDetailsTabs/InfoTab'
+
+const tabs = [
+	{
+		title: 'Info',
+		icon: <InfoIcon />,
+	},
+	{
+		title: 'Cast',
+		icon: <GroupIcon />,
+	},
+	{
+		title: 'Crew',
+		icon: <MovieIcon />,
+	},
+	{
+		title: 'Reviews',
+		icon: <ChatIcon />,
+	},
+]
 
 const MovieDetails = ({ imgURL }) => {
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
+	const [selectedTab, setSelectedTab] = React.useState(0)
 
 	React.useEffect(() => {
 		Movie.movie(movieID).then(data => setMovie(data))
@@ -56,10 +85,17 @@ const MovieDetails = ({ imgURL }) => {
 						}}
 					>
 						<Stack direction="column">
+
 							{/* The movie title */}
-							<Typography variant="h4" sx={{ fontWeight: 'bold' }}>
-								{movie.title}
-							</Typography>
+							<Stack direction="row" spacing={1}>
+								<Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+									{movie.title}
+								</Typography>
+
+								<IconButton color="primary">
+									<AddCircleIcon />
+								</IconButton>
+							</Stack>
 
 							{/* The ratings */}
 							<Stack direction="row" alignItems="center" spacing={2}>
@@ -79,6 +115,22 @@ const MovieDetails = ({ imgURL }) => {
 								))}
 							</Stack>
 						</Stack>
+					</Grid>
+
+					{/* The tabs */}
+					<Grid item xs={12}>
+						<Tabs
+							variant="fullWidth"
+							value={selectedTab}
+							onChange={(e, val) => setSelectedTab(val)}
+						>
+							{tabs.map((item, id) => (
+								<Tab key={id} icon={item.icon} label={item.title} />
+							))}
+						</Tabs>
+						{selectedTab === 0 && (
+							<InfoTab movie={movie}/>
+						)}
 					</Grid>
 				</Grid>
 			)}
