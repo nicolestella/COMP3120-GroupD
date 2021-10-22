@@ -17,6 +17,14 @@ const getReview = (userid, movieid) => {
 		.then(responce => responce.data)
 }
 
+const getWatchlist = (userid) => {
+	return axios
+		.get(
+			baseURL + `/watchlist/${userid}`,
+		)
+		.then(responce => responce.data)
+}
+
 const postReview = (token, userid, movieid, rating, review) => {
 	return axios
 		.post(
@@ -45,4 +53,4 @@ const deleteReview = () => {
 }
 */
 
-export default { getMovieReviews, getReview, postReview }
+export default { getMovieReviews, getReview, getWatchlist, postReview }
