@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 // import styling
 import theme from '../config/theme'
 // import material ui components
@@ -7,13 +8,12 @@ import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import Image from 'material-ui-image'
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 // import icons
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 
-const MovieCard = ({ img, title, hideAddButton }) => {
+const MovieCard = ({ img, title, hideAddButton, movieID }) => {
 	return (
 		<Stack
 			sx={{ width: '100%', height: '100%' }}
@@ -28,11 +28,12 @@ const MovieCard = ({ img, title, hideAddButton }) => {
 			>
 				<CardActionArea
 					sx={{ width: '100%', height: '100%' }}
+					component={Link}
+					to={`movie/${movieID}`}
 				>
 					<Image
 						src={img}
 						style={{ position: 'initial' }}
-						// cover
 					/>
 				</CardActionArea>
 			</Card>
@@ -66,6 +67,7 @@ MovieCard.propTypes = {
 	img: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	hideAddButton: PropTypes.bool,
+	movieID: PropTypes.number.isRequired,
 }
 
 export default MovieCard

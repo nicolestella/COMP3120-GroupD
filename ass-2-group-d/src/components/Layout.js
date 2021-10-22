@@ -98,7 +98,9 @@ const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
 				</Toolbar>
 			</AppBar>
 
-			{children}
+			<div style={{ padding: theme.spacing(5) }}>
+				{children}
+			</div>
 		</div>
 	)
 }

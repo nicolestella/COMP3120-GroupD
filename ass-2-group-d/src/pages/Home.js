@@ -22,8 +22,7 @@ const Home = ({ imgURL }) => {
 	return (
 		<Layout setFilter={(e) => setFilter(e)} homeDisabled>
 			{console.log(movies)}
-			{console.log(reviews)}
-			<Grid container spacing={4} sx={{ padding: theme.spacing(4) }}>
+			<Grid container spacing={4}>
 				{movies.filter((movie) => {
 					if (filter !== null && filter !== '') {
 						return movie.title.toLowerCase().includes(filter.toLowerCase())
@@ -32,7 +31,11 @@ const Home = ({ imgURL }) => {
 					}
 				}).map((movie) => (
 					<Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
-						<MovieCard img={`${imgURL}/${movie.poster_path}`} title={movie.title} />
+						<MovieCard
+							img={`${imgURL}/${movie.poster_path}`}
+							title={movie.title}
+							movieID={movie.id}
+						/>
 					</Grid>
 				))}
 			</Grid>
