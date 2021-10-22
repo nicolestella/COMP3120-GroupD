@@ -16,13 +16,14 @@ const Profile = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	const [movies, setMovies] = React.useState([])
 
 	React.useEffect(() => {
-		console.log(user)
-		Review.getWatchlist(user.nickname)
-			.then(data =>
-				data[0].movies.map(m => Movie.movie(m.movieid)
-					.then(data =>
-						setMovies(movies => [...movies, data]))))
-	}, [])
+		if (user) {
+			Review.getWatchlist(user.nickname)
+				.then(data =>
+					data[0].movies.map(m => Movie.movie(m.movieid)
+						.then(data =>
+							setMovies(movies => [...movies, data]))))
+		}
+	}, [user])
 
 	return (
 		<Layout profileDisabled isAuthenticated={isAuthenticated} user={user} login={login} logout={logout} >
