@@ -7,13 +7,16 @@ import theme from '../config/theme'
 import Layout from '../components/Layout'
 import MovieCard from '../components/MovieCard'
 import Movies from '../services/movies'
+import Reviews from '../services/reviews'
 
 const Home = ({ imgURL }) => {
 	const [movies, setMovies] = React.useState([])
+	const [reviews, setReviews] = React.useState([])
 	const [filter, setFilter] = React.useState(null)
 
 	React.useEffect(() => {
 		Movies.movies().then((data) => setMovies(data))
+		Reviews.getMovieReviews(278).then((data) => setReviews(data))
 	}, [])
 
 	return (
