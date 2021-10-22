@@ -16,13 +16,11 @@ const Profile = ({ imgURL }) => {
 	const [movies, setMovies] = React.useState([])
 
 	React.useEffect(() => {
-		const temp = movies
 		watchedList.forEach(id => {
 			Movie.movie(id).then(data => {
-				temp.push(data)
+				setMovies(movies => [...movies, data])
 			})
 		})
-		setMovies(temp)
 	}, [])
 
 	return (
@@ -49,13 +47,12 @@ const Profile = ({ imgURL }) => {
 						<Typography variant="h1"> + </Typography>
 					</Button>
 				</Grid>
-				{console.log('hello')}
 				{movies.map((movie) => (
 					<Grid key={movie.id}
 						item
 						xs={6} sm={4} md={3} lg={2}
 					>
-						<MovieCard hideAddButton img={`${imgURL}/${movie.poster_path}`} title={movie.title} />
+						<MovieCard hideAddButton img={`${imgURL}/${movie.poster_path}`} title={movie.title} movieID={movie.id}/>
 					</Grid>
 				))}
 
