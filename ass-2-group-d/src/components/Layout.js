@@ -18,7 +18,6 @@ import SearchIcon from '@mui/icons-material/Search'
 import LogoutIcon from '@mui/icons-material/Logout'
 
 const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
-
 	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
 	const handleSearchChange = (e) => {
