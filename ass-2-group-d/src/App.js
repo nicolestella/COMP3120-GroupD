@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import './App.css'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
@@ -11,6 +12,7 @@ import {
 import movies from './services/movies'
 
 function App () {
+	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 	const imgURL = 'https://image.tmdb.org/t/p/w500'
 
 	function getMovies () {
@@ -31,7 +33,7 @@ function App () {
 		<Router>
 			<Switch>
 				<Route path="/profile">
-					<Profile imgURL={imgURL} />
+					<Profile imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout}/>
 				</Route>
 
 				<Route path="/movie/:id">
@@ -39,7 +41,7 @@ function App () {
 				</Route>
 
 				<Route path="/">
-					<Home imgURL={imgURL} />
+					<Home imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} />
 				</Route>
 			</Switch>
 		</Router>

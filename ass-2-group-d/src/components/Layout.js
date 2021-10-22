@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 // import styling
@@ -17,9 +17,8 @@ import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
-	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
-
+// eslint-disable-next-line react/prop-types
+const Layout = ({ children, homeDisabled, profileDisabled, setFilter, isAuthenticated, user, login, logout }) => {
 	const handleSearchChange = (e) => {
 		setFilter(e.target.value)
 	}
@@ -89,7 +88,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, setFilter }) => {
 						: (
 							<Button
 								variant="contained"
-								onClick={() => loginWithRedirect()}
+								onClick={() => login()}
 							>
 								Login
 							</Button>

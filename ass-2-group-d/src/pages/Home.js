@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
 // import material ui components
@@ -9,7 +10,7 @@ import MovieCard from '../components/MovieCard'
 import Movies from '../services/movies'
 import Reviews from '../services/reviews'
 
-const Home = ({ imgURL }) => {
+const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	const [movies, setMovies] = React.useState([])
 	const [reviews, setReviews] = React.useState([])
 	const [filter, setFilter] = React.useState(null)
@@ -20,7 +21,7 @@ const Home = ({ imgURL }) => {
 	}, [])
 
 	return (
-		<Layout setFilter={(e) => setFilter(e)} homeDisabled>
+		<Layout setFilter={(e) => setFilter(e)} homeDisabled isAuthenticated={isAuthenticated} user={user} login={login} logout={logout}>
 			{console.log(movies)}
 			<Grid container spacing={4}>
 				{movies.filter((movie) => {

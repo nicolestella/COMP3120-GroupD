@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
 // import material ui components
@@ -11,13 +12,12 @@ import MovieCard from '../components/MovieCard'
 import Movie from '../services/movies'
 import Review from '../services/reviews'
 
-const watchedList = [526702, 496243, 592350, 424, 724089]
-
-const Profile = ({ imgURL }) => {
+const Profile = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	const [movies, setMovies] = React.useState([])
 
 	React.useEffect(() => {
-		Review.getWatchlist('nicole.stella')
+		console.log(user)
+		Review.getWatchlist(user.nickname)
 			.then(data =>
 				data[0].movies.map(m => Movie.movie(m.movieid)
 					.then(data =>
@@ -25,7 +25,7 @@ const Profile = ({ imgURL }) => {
 	}, [])
 
 	return (
-		<Layout profileDisabled>
+		<Layout profileDisabled isAuthenticated={isAuthenticated} user={user} login={login} logout={logout} >
 
 			{/* Recently Watched title */}
 			<Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: theme.spacing(3) }}>
