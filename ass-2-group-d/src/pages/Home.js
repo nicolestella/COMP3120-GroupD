@@ -21,7 +21,14 @@ const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	}, [])
 
 	return (
-		<Layout setFilter={(e) => setFilter(e)} homeDisabled isAuthenticated={isAuthenticated} user={user} login={login} logout={logout}>
+		<Layout setFilter={(e) => setFilter(e)}
+			homeDisabled
+			isAuthenticated={isAuthenticated}
+			user={user}
+			login={login}
+			logout={logout}
+			movies={movies}
+		>
 			{console.log(movies)}
 			<Grid container spacing={4}>
 				{movies.filter((movie) => {

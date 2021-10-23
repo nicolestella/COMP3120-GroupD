@@ -50,7 +50,7 @@ const MovieDetails = ({ imgURL }) => {
 
 	React.useEffect(() => {
 		Movie.movie(movieID).then(data => setMovie(data))
-	}, [])
+	}, [movieID])
 
 	return (
 		<Layout>
