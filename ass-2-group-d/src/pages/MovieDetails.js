@@ -23,6 +23,7 @@ import theme from '../config/theme'
 import Movie from '../services/movies'
 import Layout from '../components/Layout'
 import InfoTab from '../components/movieDetailsTabs/InfoTab'
+import CastTab from '../components/movieDetailsTabs/CastTab'
 
 const tabs = [
 	{
@@ -44,9 +45,19 @@ const tabs = [
 ]
 
 const MovieDetails = ({ imgURL }) => {
+	// dummy data
+	const cast = require('../assets/dummyCast.json')
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
 	const [selectedTab, setSelectedTab] = React.useState(0)
+
+	const generateTab = (id) => {
+		if (id === 0) {
+			return <InfoTab movie={movie}/>
+		} else if (id === 1) {
+			return <CastTab imgURL={imgURL} cast={cast.cast}/>
+		}
+	}
 
 	React.useEffect(() => {
 		Movie.movie(movieID).then(data => setMovie(data))
@@ -128,9 +139,7 @@ const MovieDetails = ({ imgURL }) => {
 								<Tab key={id} icon={item.icon} label={item.title} />
 							))}
 						</Tabs>
-						{selectedTab === 0 && (
-							<InfoTab movie={movie}/>
-						)}
+						{generateTab(selectedTab)}
 					</Grid>
 				</Grid>
 			)}
