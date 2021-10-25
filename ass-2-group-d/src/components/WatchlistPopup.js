@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import PropTypes from 'prop-types'
 // import material ui components
 import Dialog from '@mui/material/Dialog'
@@ -9,14 +11,22 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
+import Review from '../services/reviews'
 
-const WatchlistPopup = ({ open, onClose }) => {
+const WatchlistPopup = ({ user, movie, open, onClose }) => {
+	const { getAccessTokenSilently } = useAuth0()
 	const [data, setData] = React.useState({
 		rating: 0,
 		review: '',
 	})
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
+		const token = await getAccessTokenSilently()
+		Review.postReview(token, user.nickname, movie, data.rating, data.review)
+			.then(data => {
+				console.log(data)
+				onClose()
+			})
 	}
 
 	return (
@@ -34,7 +44,9 @@ const WatchlistPopup = ({ open, onClose }) => {
 				/>
 
 				<DialogContentText> Give it a review </DialogContentText>
-				<TextField multiline fullWidth minRows={5}/>
+				<TextField value={data.review} onChange={(e, v) => {
+					setData({ ...data, review: e.target.value })
+				}} multiline fullWidth minRows={5}/>
 			</DialogContent>
 
 			<DialogActions>

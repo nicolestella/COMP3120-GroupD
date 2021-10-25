@@ -85,7 +85,7 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 			{movie && (
 				<Grid container spacing={4}
 				>
-					<WatchlistPopup open={popupOpened} onClose={() => setPopupOpened(false)} />
+					<WatchlistPopup user={user} movie={movieID} open={popupOpened} onClose={() => setPopupOpened(false)} />
 					{/* The poster */}
 					<Grid item xs={12} sm={6} md={5} lg={3}>
 						<Card
@@ -121,7 +121,7 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 								</Typography>
 
 								{/* Add to watchlist button */}
-								<Button color="primary" onClick={() => setPopupOpened(true)}>
+								<Button disabled={!isAuthenticated} color="primary" onClick={() => setPopupOpened(true)}>
 									<AddCircleIcon />
 									Mark as watched
 								</Button>
