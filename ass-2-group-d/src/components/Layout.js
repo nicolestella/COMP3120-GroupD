@@ -134,7 +134,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 						: (
 							<Button
 								variant="contained"
-								onClick={() => login()}
+								onClick={login}
 							>
 								Login
 							</Button>
