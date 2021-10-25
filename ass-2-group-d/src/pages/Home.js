@@ -12,12 +12,16 @@ import Reviews from '../services/reviews'
 
 const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	const [movies, setMovies] = React.useState([])
+	const [simMovies, setSimMovies] = React.useState([])
+	const [cast, setCast] = React.useState([])
 	const [reviews, setReviews] = React.useState([])
 	const [filter, setFilter] = React.useState(null)
 
 	React.useEffect(() => {
 		Movies.movies().then((data) => setMovies(data))
 		Reviews.getMovieReviews(278).then((data) => setReviews(data))
+		Movies.similarMovies(278).then((data) => setSimMovies(data))
+		Movies.movieCast(278).then((data) => setCast(data))
 	}, [])
 
 	return (

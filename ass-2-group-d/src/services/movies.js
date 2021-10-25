@@ -18,4 +18,20 @@ const movie = (movieid) => {
 		.then(response => response.data)
 }
 
-export default { movies, movie }
+const similarMovies = (movieid) => {
+	return axios
+		.get(
+			`${baseURL}/${movieid}/similar?${APIKey}&language=en-US&page=1`,
+		)
+		.then(response => response.data.results)
+}
+
+const movieCast = (movieid) => {
+	return axios
+		.get(
+			`${baseURL}/${movieid}/credits?${APIKey}&language=en-US`,
+		)
+		.then(response => response.data.cast)
+}
+
+export default { movies, movie, similarMovies, movieCast }
