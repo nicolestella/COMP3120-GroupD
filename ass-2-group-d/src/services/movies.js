@@ -31,7 +31,7 @@ const movieCast = (movieid) => {
 		.get(
 			`${baseURL}/${movieid}/credits?${APIKey}&language=en-US`,
 		)
-		.then(response => response.data.cast)
+		.then(response => response.data)
 }
 
 export default { movies, movie, similarMovies, movieCast }

@@ -20,6 +20,7 @@ import InfoIcon from '@mui/icons-material/Info'
 import MovieIcon from '@mui/icons-material/Movie'
 // import data
 import Movie from '../services/movies'
+import Reviews from '../services/reviews'
 // import custom components
 import theme from '../config/theme'
 import Layout from '../components/Layout'
@@ -49,9 +50,10 @@ const tabs = [
 
 const MovieDetails = ({ imgURL }) => {
 	// dummy data
-	const cast = require('../assets/dummyCast.json')
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
+	const [cast, setCast] = React.useState([])
+	const [reviews, setReviews] = React.useState()
 	const [selectedTab, setSelectedTab] = React.useState(0)
 
 	const generateTab = (id) => {
@@ -62,12 +64,14 @@ const MovieDetails = ({ imgURL }) => {
 		} else if (id === 2) {
 			return <CrewTab crew={cast.crew} />
 		} else if (id === 3) {
-			return <ReviewsTab movieID={movie.id} />
+			return <ReviewsTab reviews={reviews} />
 		}
 	}
 
 	React.useEffect(() => {
 		Movie.movie(movieID).then(data => setMovie(data))
+		Movie.movieCast(movieID).then((data) => setCast(data))
+		Reviews.getMovieReviews(movieID).then(data => setReviews(data))
 	}, [movieID])
 
 	return (

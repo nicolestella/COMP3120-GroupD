@@ -7,20 +7,10 @@ import Grid from '@mui/material/Grid'
 import Rating from '@mui/material/Rating'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-// import data
-import Reviews from '../../services/reviews'
 // import custom components
 import theme from '../../config/theme'
 
-const ReviewsTab = ({ movieID }) => {
-	const [reviews, setReviews] = React.useState()
-
-	React.useEffect(() => {
-		Reviews.getMovieReviews(movieID).then(data => {
-			setReviews(data)
-		})
-	}, [])
-
+const ReviewsTab = ({ reviews }) => {
 	return (
 		<Grid container spacing={3}>
 			{reviews && reviews.map((r, id) => (
@@ -47,7 +37,7 @@ const ReviewsTab = ({ movieID }) => {
 }
 
 ReviewsTab.propTypes = {
-	movieID: PropTypes.number.isRequired,
+	reviews: PropTypes.array.isRequired,
 }
 
 export default ReviewsTab
