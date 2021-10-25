@@ -50,7 +50,6 @@ const tabs = [
 ]
 
 const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
-
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
 	const [cast, setCast] = React.useState([])
