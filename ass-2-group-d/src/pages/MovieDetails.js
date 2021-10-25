@@ -24,6 +24,7 @@ import Reviews from '../services/reviews'
 // import custom components
 import theme from '../config/theme'
 import Layout from '../components/Layout'
+import WatchlistPopup from '../components/WatchlistPopup'
 import InfoTab from '../components/movieDetailsTabs/InfoTab'
 import CastTab from '../components/movieDetailsTabs/CastTab'
 import CrewTab from '../components/movieDetailsTabs/CrewTab'
@@ -48,14 +49,14 @@ const tabs = [
 	},
 ]
 
-// eslint-disable-next-line react/prop-types
 const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
-	// dummy data
+
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
 	const [cast, setCast] = React.useState([])
 	const [reviews, setReviews] = React.useState()
 	const [selectedTab, setSelectedTab] = React.useState(0)
+	const [popupOpened, setPopupOpened] = React.useState(false)
 
 	const generateTab = (id) => {
 		if (id === 0) {
@@ -85,6 +86,7 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 			{movie && (
 				<Grid container spacing={4}
 				>
+					<WatchlistPopup user={user} movie={movieID} open={popupOpened} onClose={() => setPopupOpened(false)} />
 					{/* The poster */}
 					<Grid item xs={12} sm={6} md={5} lg={3}>
 						<Card
@@ -119,9 +121,10 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 									{movie.title}
 								</Typography>
 
-								<Button color="primary">
+								{/* Add to watchlist button */}
+								<Button disabled={!isAuthenticated} color="primary" onClick={() => setPopupOpened(true)}>
 									<AddCircleIcon />
-									Add to watchlist
+									Mark as watched
 								</Button>
 							</Stack>
 
@@ -166,6 +169,10 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 
 MovieDetails.propTypes = {
 	imgURL: PropTypes.string.isRequired,
+	isAuthenticated: PropTypes.bool,
+	user: PropTypes.object,
+	login: PropTypes.func,
+	logout: PropTypes.func,
 }
 
 export default MovieDetails

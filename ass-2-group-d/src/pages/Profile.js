@@ -34,21 +34,6 @@ const Profile = ({ imgURL, isAuthenticated, user, login, logout }) => {
 			</Typography>
 
 			<Grid container spacing={4}>
-				<Grid item
-					xs={6} sm={4} md={3} lg={2}
-				>
-					{/* Add new button */}
-					<Button
-						sx={{
-							width: '100%',
-							aspectRatio: '0.66667',
-							backgroundColor: 'transparent',
-						}}
-						variant="outlined"
-					>
-						<Typography variant="h1"> + </Typography>
-					</Button>
-				</Grid>
 				{movies.map((movie) => (
 					<Grid key={movie.id}
 						item
