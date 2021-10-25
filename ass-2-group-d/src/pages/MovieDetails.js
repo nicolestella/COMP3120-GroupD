@@ -48,7 +48,8 @@ const tabs = [
 	},
 ]
 
-const MovieDetails = ({ imgURL }) => {
+// eslint-disable-next-line react/prop-types
+const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	// dummy data
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
@@ -75,7 +76,12 @@ const MovieDetails = ({ imgURL }) => {
 	}, [movieID])
 
 	return (
-		<Layout>
+		<Layout
+			isAuthenticated={isAuthenticated}
+			user={user}
+			login={login}
+			logout={logout}
+		>
 			{movie && (
 				<Grid container spacing={4}
 				>
