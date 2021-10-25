@@ -2,28 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
 // import material ui components
-import Image from 'material-ui-image'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import Rating from '@mui/material/Rating'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
 import Chip from '@mui/material/Chip'
 import Grid from '@mui/material/Grid'
+import Image from 'material-ui-image'
+import Rating from '@mui/material/Rating'
 import Stack from '@mui/material/Stack'
-import Card from '@mui/material/Card'
-import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import Typography from '@mui/material/Typography'
 // import icons
 import AddCircleIcon from '@mui/icons-material/AddCircle'
-import InfoIcon from '@mui/icons-material/Info'
-import GroupIcon from '@mui/icons-material/Group'
-import MovieIcon from '@mui/icons-material/Movie'
 import ChatIcon from '@mui/icons-material/Chat'
+import GroupIcon from '@mui/icons-material/Group'
+import InfoIcon from '@mui/icons-material/Info'
+import MovieIcon from '@mui/icons-material/Movie'
+// import data
+import Movie from '../services/movies'
 // import custom components
 import theme from '../config/theme'
-import Movie from '../services/movies'
 import Layout from '../components/Layout'
 import InfoTab from '../components/movieDetailsTabs/InfoTab'
 import CastTab from '../components/movieDetailsTabs/CastTab'
+import CrewTab from '../components/movieDetailsTabs/CrewTab'
+import ReviewsTab from '../components/movieDetailsTabs/ReviewsTab'
 
 const tabs = [
 	{
@@ -56,6 +59,10 @@ const MovieDetails = ({ imgURL }) => {
 			return <InfoTab movie={movie}/>
 		} else if (id === 1) {
 			return <CastTab imgURL={imgURL} cast={cast.cast}/>
+		} else if (id === 2) {
+			return <CrewTab crew={cast.crew} />
+		} else if (id === 3) {
+			return <ReviewsTab movieID={movie.id} />
 		}
 	}
 
@@ -68,7 +75,6 @@ const MovieDetails = ({ imgURL }) => {
 			{movie && (
 				<Grid container spacing={4}
 				>
-					{console.log(movie)}
 					{/* The poster */}
 					<Grid item xs={12} sm={6} md={5} lg={3}>
 						<Card
@@ -103,9 +109,10 @@ const MovieDetails = ({ imgURL }) => {
 									{movie.title}
 								</Typography>
 
-								<IconButton color="primary">
+								<Button color="primary">
 									<AddCircleIcon />
-								</IconButton>
+									Add to watchlist
+								</Button>
 							</Stack>
 
 							{/* The ratings */}
