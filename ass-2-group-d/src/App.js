@@ -37,7 +37,7 @@ function App () {
 				</Route>
 
 				<Route path="/movie/:id">
-					<MovieDetails imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout}/>
+					<MovieDetails imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} />
 				</Route>
 
 				<Route path="/">
