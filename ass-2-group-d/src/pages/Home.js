@@ -33,9 +33,6 @@ const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
 			logout={logout}
 			movies={movies}
 		>
-			{console.log(movies)}
-			{console.log(simMovies)}
-			{console.log(cast)}
 			<Grid container spacing={4}>
 				{movies.filter((movie) => {
 					if (filter !== null && filter !== '') {
