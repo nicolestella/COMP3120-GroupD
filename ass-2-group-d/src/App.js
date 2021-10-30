@@ -30,21 +30,31 @@ function App () {
 	}
 
 	return (
+
 		<Router>
 			<Switch>
+
 				<Route path="/profile">
-					<Profile imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout}/>
+
+					<Profile imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} />
+
 				</Route>
 
 				<Route path="/movie/:id">
-					<MovieDetails imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} />
+
+					<MovieDetails imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout}/>
+
 				</Route>
 
 				<Route path="/">
-					<Home imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} />
+
+					<Home imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout}/>
+
 				</Route>
+
 			</Switch>
 		</Router>
+
 	)
 }
 
