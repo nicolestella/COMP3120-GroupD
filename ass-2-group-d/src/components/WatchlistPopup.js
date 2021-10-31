@@ -23,10 +23,7 @@ const WatchlistPopup = ({ user, movie, open, onClose }) => {
 	const handleSubmit = async () => {
 		const token = await getAccessTokenSilently()
 		Review.postReview(token, user.nickname, movie, data.rating, data.review)
-			.then(data => {
-				console.log(data)
-				onClose()
-			})
+			.then(() => onClose())
 	}
 
 	return (

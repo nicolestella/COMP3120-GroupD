@@ -59,7 +59,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 						to={!homeDisabled && '/'}
 						sx={{ flexGrow: 1, textDecoration: 'none', color: '#000' }}
 					>
-            name
+            D-List
 					</Typography>
 
 					{/* {Search bar functionality} */}

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:3001/api/reviews'
+const baseURL = '/api/reviews'
 
 const getMovieReviews = (movieid) => {
 	return axios

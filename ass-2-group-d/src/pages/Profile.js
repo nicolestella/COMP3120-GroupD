@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 // import material ui components
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import { Paper } from '@material-ui/core'
 // import custom components
