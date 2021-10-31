@@ -48,20 +48,22 @@ function App () {
 
 				<Route path="/profile">
 					<ThemeProvider theme={darkTheme}>
-						<Profile imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} onChangeTheme={() => setDarkMode(!darkmode)}/>
+						<Profile imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} check={darkmode} onChangeTheme={() => setDarkMode(!darkmode)}/>
 					</ThemeProvider>
 				</Route>
 
 				<Route path="/movie/:id">
 					<ThemeProvider theme={darkTheme}>
-						<MovieDetails imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} onChangeTheme={() => setDarkMode(!darkmode)}/>
+						<MovieDetails imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} check={darkmode} onChangeTheme={() => setDarkMode(!darkmode)}/>
 					</ThemeProvider>
 				</Route>
 
 				<Route path="/">
+
 					<ThemeProvider theme={darkTheme}>
-						<Home imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} onChangeTheme={() => setDarkMode(!darkmode)}/>
+						<Home imgURL={imgURL} isAuthenticated={isAuthenticated} user={user} login={loginWithRedirect} logout={logout} check={darkmode} onChangeTheme={() => setDarkMode(!darkmode)}/>
 					</ThemeProvider>
+
 				</Route>
 
 			</Switch>

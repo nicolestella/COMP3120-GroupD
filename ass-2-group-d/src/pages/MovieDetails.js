@@ -50,7 +50,7 @@ const tabs = [
 	},
 ]
 
-const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme }) => {
+const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme, check }) => {
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
 	const [cast, setCast] = React.useState([])
@@ -84,6 +84,7 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout, onChangeTh
 				login={login}
 				logout={logout}
 				onChangeTheme={onChangeTheme}
+				check={check}
 			>
 				{movie && (
 					<Grid container spacing={4}
@@ -177,6 +178,7 @@ MovieDetails.propTypes = {
 	login: PropTypes.func,
 	logout: PropTypes.func,
 	onChangeTheme: PropTypes.func,
+	check: PropTypes.bool,
 }
 
 export default MovieDetails

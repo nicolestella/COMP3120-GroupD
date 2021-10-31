@@ -13,7 +13,7 @@ import MovieCard from '../components/MovieCard'
 import Movie from '../services/movies'
 import Review from '../services/reviews'
 
-const Profile = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme }) => {
+const Profile = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme, check }) => {
 	const [movies, setMovies] = React.useState([])
 
 	React.useEffect(() => {
@@ -28,7 +28,7 @@ const Profile = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme }
 
 	return (
 		<Paper>
-			<Layout profileDisabled isAuthenticated={isAuthenticated} user={user} login={login} logout={logout} onChangeTheme={onChangeTheme} >
+			<Layout profileDisabled isAuthenticated={isAuthenticated} user={user} login={login} logout={logout} onChangeTheme={onChangeTheme} check={check} >
 
 				{/* Recently Watched title */}
 				<Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: theme.spacing(3) }}>

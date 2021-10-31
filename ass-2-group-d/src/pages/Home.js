@@ -9,7 +9,7 @@ import MovieCard from '../components/MovieCard'
 import Movies from '../services/movies'
 import { Paper } from '@material-ui/core'
 
-const Home = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme }) => {
+const Home = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme, check }) => {
 	const [movies, setMovies] = React.useState([])
 	const [filter, setFilter] = React.useState(null)
 
@@ -27,6 +27,7 @@ const Home = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme }) =
 				logout={logout}
 				movies={movies}
 				onChangeTheme={onChangeTheme}
+				check={check}
 			>
 				<Grid container spacing={4}
 				>

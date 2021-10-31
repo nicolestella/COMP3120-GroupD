@@ -142,6 +142,8 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 						)}
 
 					<Switch
+						// defaultChecked
+						// color='default'
 						onChange={onChangeTheme}
 						checked={check}
 					/>
