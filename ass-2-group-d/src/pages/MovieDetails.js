@@ -18,6 +18,7 @@ import ChatIcon from '@mui/icons-material/Chat'
 import GroupIcon from '@mui/icons-material/Group'
 import InfoIcon from '@mui/icons-material/Info'
 import MovieIcon from '@mui/icons-material/Movie'
+import { Paper } from '@material-ui/core'
 // import data
 import Movie from '../services/movies'
 import Reviews from '../services/reviews'
@@ -49,7 +50,7 @@ const tabs = [
 	},
 ]
 
-const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
+const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme, check }) => {
 	const movieID = useParams().id
 	const [movie, setMovie] = React.useState()
 	const [cast, setCast] = React.useState([])
@@ -76,93 +77,97 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	}, [movieID])
 
 	return (
-		<Layout
-			isAuthenticated={isAuthenticated}
-			user={user}
-			login={login}
-			logout={logout}
-		>
-			{movie && (
-				<Grid container spacing={4}
-				>
-					<WatchlistPopup user={user} movie={movieID} open={popupOpened} onClose={() => setPopupOpened(false)} />
-					{/* The poster */}
-					<Grid item xs={12} sm={6} md={5} lg={3}>
-						<Card
+		<Paper>
+			<Layout
+				isAuthenticated={isAuthenticated}
+				user={user}
+				login={login}
+				logout={logout}
+				onChangeTheme={onChangeTheme}
+				check={check}
+			>
+				{movie && (
+					<Grid container spacing={4}
+					>
+						<WatchlistPopup user={user} movie={movieID} open={popupOpened} onClose={() => setPopupOpened(false)} />
+						{/* The poster */}
+						<Grid item xs={12} sm={6} md={5} lg={3}>
+							<Card
+								sx={{
+									aspectRatio: '0.66667',
+									display: 'flex',
+									flexDirection: 'column',
+									justifyContent: 'flex-end',
+								}}
+							>
+								<Image
+									src={`${imgURL}/${movie.poster_path}`}
+									imageStyle={{ position: 'initial' }}
+								/>
+							</Card>
+						</Grid>
+
+						{/* The details */}
+						<Grid item xs={12} sm={6} md={7} lg={9}
 							sx={{
-								aspectRatio: '0.66667',
 								display: 'flex',
 								flexDirection: 'column',
-								justifyContent: 'flex-end',
+								alignItems: 'center',
+								justifyContent: 'center',
 							}}
 						>
-							<Image
-								src={`${imgURL}/${movie.poster_path}`}
-								imageStyle={{ position: 'initial' }}
-							/>
-						</Card>
-					</Grid>
+							<Stack direction="column">
 
-					{/* The details */}
-					<Grid item xs={12} sm={6} md={7} lg={9}
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-							justifyContent: 'center',
-						}}
-					>
-						<Stack direction="column">
+								{/* The movie title */}
+								<Stack direction="row" spacing={1}>
+									<Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+										{movie.title}
+									</Typography>
 
-							{/* The movie title */}
-							<Stack direction="row" spacing={1}>
-								<Typography variant="h4" sx={{ fontWeight: 'bold' }}>
-									{movie.title}
-								</Typography>
-
-								{/* Add to watchlist button */}
-								<Button disabled={!isAuthenticated} color="primary" onClick={() => setPopupOpened(true)}>
-									<AddCircleIcon />
+									{/* Add to watchlist button */}
+									<Button disabled={!isAuthenticated} color="primary" onClick={() => setPopupOpened(true)}>
+										<AddCircleIcon />
 									Mark as watched
-								</Button>
+									</Button>
+								</Stack>
+
+								{/* The ratings */}
+								<Stack direction="row" alignItems="center" spacing={2}>
+									<Rating value={movie.vote_average / 2} precision={0.5} readOnly />
+									<Typography variant="body2" color="primary">
+										{movie.vote_count} Reviews
+									</Typography>
+								</Stack>
+
+								{/* The description */}
+								<Typography> {movie.overview} </Typography>
+
+								{/* The genres */}
+								<Stack direction="row" spacing={1} marginTop={theme.spacing(2)}>
+									{movie.genres.map((genre) => (
+										<Chip key={genre.id} label={genre.name} variant="outlined"/>
+									))}
+								</Stack>
 							</Stack>
+						</Grid>
 
-							{/* The ratings */}
-							<Stack direction="row" alignItems="center" spacing={2}>
-								<Rating value={movie.vote_average / 2} precision={0.5} readOnly />
-								<Typography variant="body2" color="primary">
-									{movie.vote_count} Reviews
-								</Typography>
-							</Stack>
-
-							{/* The description */}
-							<Typography> {movie.overview} </Typography>
-
-							{/* The genres */}
-							<Stack direction="row" spacing={1} marginTop={theme.spacing(2)}>
-								{movie.genres.map((genre) => (
-									<Chip key={genre.id} label={genre.name} variant="outlined"/>
+						{/* The tabs */}
+						<Grid item xs={12}>
+							<Tabs
+								variant="fullWidth"
+								value={selectedTab}
+								onChange={(e, val) => setSelectedTab(val)}
+							>
+								{tabs.map((item, id) => (
+									<Tab key={id} icon={item.icon} label={item.title} />
 								))}
-							</Stack>
-						</Stack>
+							</Tabs>
+							{generateTab(selectedTab)}
+						</Grid>
 					</Grid>
-
-					{/* The tabs */}
-					<Grid item xs={12}>
-						<Tabs
-							variant="fullWidth"
-							value={selectedTab}
-							onChange={(e, val) => setSelectedTab(val)}
-						>
-							{tabs.map((item, id) => (
-								<Tab key={id} icon={item.icon} label={item.title} />
-							))}
-						</Tabs>
-						{generateTab(selectedTab)}
-					</Grid>
-				</Grid>
-			)}
-		</Layout>
+				)}
+			</Layout>
+		</Paper>
 	)
 }
 
@@ -172,6 +177,8 @@ MovieDetails.propTypes = {
 	user: PropTypes.object,
 	login: PropTypes.func,
 	logout: PropTypes.func,
+	onChangeTheme: PropTypes.func,
+	check: PropTypes.bool,
 }
 
 export default MovieDetails
