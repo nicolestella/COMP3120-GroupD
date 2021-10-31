@@ -94,16 +94,4 @@ apiRouter.post('/api/reviews', checkJwt, async (request, response) => {
 	}
 })
 
-apiRouter.delete('/api/reviews/:userid/:movieid', (request, response) => {
-	const userid = request.params.userid
-	const movieid = request.params.movieid
-
-	Review.updateOne({ userid: userid }, { $pull: { movies: { movieid: movieid } } })
-		.then(result => {
-			response.json(result)
-		}).catch(() => {
-			response.status(404).end()
-		})
-})
-
 module.exports = apiRouter
