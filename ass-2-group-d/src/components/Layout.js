@@ -20,9 +20,10 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 // import icons
 import SearchIcon from '@mui/icons-material/Search'
+import { Switch } from '@material-ui/core'
 
 // eslint-disable-next-line react/prop-types
-const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user, login, logout }) => {
+const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user, login, logout, change, check, onChangeTheme }) => {
 	const [movies, setMovies] = React.useState([])
 
 	const imgURL = 'https://image.tmdb.org/t/p/w500'
@@ -97,6 +98,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 						renderInput={(params) => (
 							<TextField
 								{...params}
+								variant="filled"
 								label={
 									<Stack direction="row" spacing={1}>
 										<SearchIcon />
@@ -139,6 +141,13 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 								Login
 							</Button>
 						)}
+
+					<Switch
+						// defaultChecked
+						// color='default'
+						onChange={onChangeTheme}
+						checked={check}
+					/>
 
 				</Toolbar>
 			</AppBar>

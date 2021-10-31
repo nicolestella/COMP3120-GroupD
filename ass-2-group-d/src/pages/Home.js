@@ -7,8 +7,9 @@ import Grid from '@mui/material/Grid'
 import Layout from '../components/Layout'
 import MovieCard from '../components/MovieCard'
 import Movies from '../services/movies'
+import { Paper } from '@material-ui/core'
 
-const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
+const Home = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme, check }) => {
 	const [movies, setMovies] = React.useState([])
 	const [filter, setFilter] = React.useState(null)
 
@@ -17,32 +18,37 @@ const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	}, [])
 
 	return (
-		<Layout setFilter={(e) => setFilter(e)}
-			homeDisabled
-			isAuthenticated={isAuthenticated}
-			user={user}
-			login={login}
-			logout={logout}
-			movies={movies}
-		>
-			<Grid container spacing={4}>
-				{movies.filter((movie) => {
-					if (filter !== null && filter !== '') {
-						return movie.title.toLowerCase().includes(filter.toLowerCase())
-					} else {
-						return true
-					}
-				}).map((movie) => (
-					<Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
-						<MovieCard
-							img={`${imgURL}/${movie.poster_path}`}
-							title={movie.title}
-							movieID={movie.id}
-						/>
-					</Grid>
-				))}
-			</Grid>
-		</Layout>
+		<Paper>
+			<Layout setFilter={(e) => setFilter(e)}
+				homeDisabled
+				isAuthenticated={isAuthenticated}
+				user={user}
+				login={login}
+				logout={logout}
+				movies={movies}
+				onChangeTheme={onChangeTheme}
+				check={check}
+			>
+				<Grid container spacing={4}
+				>
+					{movies.filter((movie) => {
+						if (filter !== null && filter !== '') {
+							return movie.title.toLowerCase().includes(filter.toLowerCase())
+						} else {
+							return true
+						}
+					}).map((movie) => (
+						<Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
+							<MovieCard
+								img={`${imgURL}/${movie.poster_path}`}
+								title={movie.title}
+								movieID={movie.id}
+							/>
+						</Grid>
+					))}
+				</Grid>
+			</Layout>
+		</Paper>
 	)
 }
 
