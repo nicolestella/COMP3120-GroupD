@@ -98,6 +98,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 						renderInput={(params) => (
 							<TextField
 								{...params}
+								variant="filled"
 								label={
 									<Stack direction="row" spacing={1}>
 										<SearchIcon />
