@@ -42,7 +42,11 @@ apiRouter.get('/api/reviews/:userid/:movieid', (request, response) => {
 	Review.find({ userid: userid, 'movies.movieid': movieid })
 		.then(result => {
 			const review = result.map(r => ({ userid: r.userid, review: r.movies.filter(m => m.movieid === movieid)[0] }))
-			response.json(review)
+			if (review.length === 0) {
+				response.json(false)
+			} else {
+				response.json(true)
+			}
 		}).catch(() => {
 			response.status(404).end()
 		})

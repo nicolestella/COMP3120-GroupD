@@ -6,7 +6,7 @@ const getMovieReviews = (movieid) => {
 		.get(
 			baseURL + `/movie/${movieid}`,
 		)
-		.then(responce => responce.data)
+		.then(response => response.data)
 }
 
 const getReview = (userid, movieid) => {
@@ -14,7 +14,7 @@ const getReview = (userid, movieid) => {
 		.get(
 			baseURL + `/${userid}/${movieid}`,
 		)
-		.then(responce => responce.data)
+		.then(response => response.data)
 }
 
 const getWatchlist = (userid) => {
@@ -22,7 +22,7 @@ const getWatchlist = (userid) => {
 		.get(
 			baseURL + `/watchlist/${userid}`,
 		)
-		.then(responce => responce.data)
+		.then(response => response.data)
 }
 
 const postReview = (token, userid, movieid, rating, review) => {
@@ -43,14 +43,5 @@ const postReview = (token, userid, movieid, rating, review) => {
 			},
 		)
 }
-/*
-const deleteReview = () => {
-	return axios
-		.delete(
-
-		)
-		.then()
-}
-*/
 
 export default { getMovieReviews, getReview, getWatchlist, postReview }

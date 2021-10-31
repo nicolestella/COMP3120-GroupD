@@ -54,6 +54,7 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 	const [movie, setMovie] = React.useState()
 	const [cast, setCast] = React.useState([])
 	const [reviews, setReviews] = React.useState()
+	const [watched, setWatched] = React.useState(false)
 	const [selectedTab, setSelectedTab] = React.useState(0)
 	const [popupOpened, setPopupOpened] = React.useState(false)
 
@@ -73,7 +74,10 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 		Movie.movie(movieID).then(data => setMovie(data))
 		Movie.movieCast(movieID).then((data) => setCast(data))
 		Reviews.getMovieReviews(movieID).then(data => setReviews(data))
-	}, [movieID])
+		if (user) {
+			Reviews.getReview(user.nickname, movieID).then(data => setWatched(data))
+		}
+	}, [movieID, user, watched])
 
 	return (
 		<Layout
@@ -121,7 +125,7 @@ const MovieDetails = ({ imgURL, isAuthenticated, user, login, logout }) => {
 								</Typography>
 
 								{/* Add to watchlist button */}
-								<Button disabled={!isAuthenticated} color="primary" onClick={() => setPopupOpened(true)}>
+								<Button disabled={!isAuthenticated || watched} color="primary" onClick={() => setPopupOpened(true)}>
 									<AddCircleIcon />
 									Mark as watched
 								</Button>

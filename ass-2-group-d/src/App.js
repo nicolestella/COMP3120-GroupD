@@ -9,25 +9,10 @@ import {
 	Switch,
 	Route,
 } from 'react-router-dom'
-import movies from './services/movies'
 
 function App () {
 	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
 	const imgURL = 'https://image.tmdb.org/t/p/w500'
-
-	function getMovies () {
-		movies.movies().then(
-			data => {
-				return data
-			})
-	}
-
-	function getMovie (movieId) {
-		movies.movie(movieId).then(
-			data => {
-				return data
-			})
-	}
 
 	return (
 		<Router>
