@@ -23,7 +23,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Switch } from '@material-ui/core'
 
 // eslint-disable-next-line react/prop-types
-const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user, login, logout, change, check }) => {
+const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user, login, logout, change, check, onChangeTheme }) => {
 	const [movies, setMovies] = React.useState([])
 
 	const imgURL = 'https://image.tmdb.org/t/p/w500'
@@ -142,10 +142,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 						)}
 
 					<Switch
-						// defaultChecked
-						color='default'
-						inputProps={{ 'aria-label': 'checkbox with default color' }}
-						onChange={change}
+						onChange={onChangeTheme}
 						checked={check}
 					/>
 

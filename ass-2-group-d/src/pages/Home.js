@@ -7,61 +7,47 @@ import Grid from '@mui/material/Grid'
 import Layout from '../components/Layout'
 import MovieCard from '../components/MovieCard'
 import Movies from '../services/movies'
-import {
-	createTheme,
-	ThemeProvider,
-} from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
 
-const Home = ({ imgURL, isAuthenticated, user, login, logout }) => {
+const Home = ({ imgURL, isAuthenticated, user, login, logout, onChangeTheme }) => {
 	const [movies, setMovies] = React.useState([])
 	const [filter, setFilter] = React.useState(null)
-	const [darkmode, setDarkMode] = React.useState(false)
-
-	const darkTheme = createTheme({
-		palette: {
-			type: darkmode ? 'dark' : 'light',
-		},
-	})
 
 	React.useEffect(() => {
 		Movies.movies().then((data) => setMovies(data))
 	}, [])
 
 	return (
-		<ThemeProvider theme={darkTheme}>
-			<Paper>
-				<Layout setFilter={(e) => setFilter(e)}
-					homeDisabled
-					isAuthenticated={isAuthenticated}
-					user={user}
-					login={login}
-					logout={logout}
-					movies={movies}
-					check={darkmode}
-					change={() => setDarkMode(!darkmode)}
+		<Paper>
+			<Layout setFilter={(e) => setFilter(e)}
+				homeDisabled
+				isAuthenticated={isAuthenticated}
+				user={user}
+				login={login}
+				logout={logout}
+				movies={movies}
+				onChangeTheme={onChangeTheme}
+			>
+				<Grid container spacing={4}
 				>
-					<Grid container spacing={4}
-					>
-						{movies.filter((movie) => {
-							if (filter !== null && filter !== '') {
-								return movie.title.toLowerCase().includes(filter.toLowerCase())
-							} else {
-								return true
-							}
-						}).map((movie) => (
-							<Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
-								<MovieCard
-									img={`${imgURL}/${movie.poster_path}`}
-									title={movie.title}
-									movieID={movie.id}
-								/>
-							</Grid>
-						))}
-					</Grid>
-				</Layout>
-			</Paper>
-		</ThemeProvider>
+					{movies.filter((movie) => {
+						if (filter !== null && filter !== '') {
+							return movie.title.toLowerCase().includes(filter.toLowerCase())
+						} else {
+							return true
+						}
+					}).map((movie) => (
+						<Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
+							<MovieCard
+								img={`${imgURL}/${movie.poster_path}`}
+								title={movie.title}
+								movieID={movie.id}
+							/>
+						</Grid>
+					))}
+				</Grid>
+			</Layout>
+		</Paper>
 	)
 }
 
