@@ -77,39 +77,3 @@ ProfilePage
 # FUTURE IMPLEMENTATIONS
 
 # PROJECT MANAGEMENT
-
-# SCRIPTS:
-
-# "npm start"
-
-Runs the app in the development mode in http://localhost:3000.
-The page will reload if you make edits.
-
-# "npm run build"
-
-Builds the app for production to the `build` folder so that your app is ready to be deployed.
-
-# "npm run server"
-
-Runs the server in PORT 3001, http://localhost:3001 will display the current production build.
-Changes will be reflected on reload as the script uses Nodemon.
-
-## HEROKU
-
-This website is deployed to Heroku on a single web dyno.
-
-## "heroku ps"
-
-To check how many dynos are running
-
-## "heroku ps:scale web=n"
-
-To run on n amount of dynos (only 1 is free)
-
-## "pushing production build to heroku"
-
-To push a new production build to heroku you must use the following commands:
-'npm run build'
-'git add .'
-'git commit -m "some changes"
-'git push heroku master'
