@@ -42,7 +42,7 @@ const Layout = ({ children, homeDisabled, profileDisabled, isAuthenticated, user
 			<AppBar
 				sx={{
 					backgroundColor: 'transparent',
-					width: '100vw',
+					width: '100%',
 					color: '#000',
 					paddingTop: theme.spacing(2),
 				}}
