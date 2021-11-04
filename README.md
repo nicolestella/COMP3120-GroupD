@@ -97,13 +97,11 @@ through props.
 
 # COMPONENTS
 
-MovieDetailsTabs
+The frontend of the application is built with ReactJS, and using a React UI library called Material-UI. There are a few other modules in use as well, namely axios, react-dom-router, and material-ui-image.
 
-Layout
+For this project, we made components in a separate folder from the pages. This is done so that some components can be easily reused or modified, and the page files are easier to read and understand. For example, the `Layout` component is reused in every page. This helps to keep the pages consistent, and if future developers want to modify the page layout, such as change the website logo or add a footer component, this can be easily done by just changing `Layout.js`.
 
-MovieCard
-
-WatchlistPopup
+Another reason to separate the components is for pages such as the home page, where there is a grid of movie cards, it is much simpler to use the Javascript array functions such as `map()` when the movie cards are made into separate components.
 
 # SERVICES
 
@@ -165,21 +163,21 @@ GitHub was also used as a code repository tool where the project was hosted on a
 Roles and tasks completed:
 
 Nicole Stella: Front end developer and page designer
- Finalising page designs and element positioning
- Front end implementation of Home page, Profile page and MovieDetailsPage
- Material UI refactoring
+Finalising page designs and element positioning
+Front end implementation of Home page, Profile page and MovieDetailsPage
+Material UI refactoring
 
 Juyoung Lee: Back end and server infrastructure developer
- Page routing and switching, skeleton for data routing
- Set up server.js and server/app.js
- Dark mode, Search functionality and navigation
+Page routing and switching, skeleton for data routing
+Set up server.js and server/app.js
+Dark mode, Search functionality and navigation
 
 Daniel Mendham: Back end and API services developer
- REST Client/Unirest requesting from MovieDB API
- Service component data distribution to frontend
- Reviews and Movies data handling
+REST Client/Unirest requesting from MovieDB API
+Service component data distribution to frontend
+Reviews and Movies data handling
 
 Peter Wu: Back end, API endpoint developer and data manager
- Set up github, MongoDB and Auth0
- MongoDB and endpoints for watched list and delete endpoint
- Profile page data set up & displayed and submit review functionality
+Set up github, MongoDB and Auth0
+MongoDB and endpoints for watched list and delete endpoint
+Profile page data set up & displayed and submit review functionality
