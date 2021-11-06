@@ -1,6 +1,20 @@
-# DEPLOYMENT:
+### DEPLOYMENT:
 
 The web application is currently deployed on https://group-d-list.herokuapp.com.
+
+## RUN
+
+# "npm start"
+
+Runs the front-end of the app in the development mode in http://localhost:3000.
+The page will reload if you make edits. Need to start server as well to populate data and access/develop all functionality.
+
+# "npm run server"
+
+Runs the server in PORT 3001. http://localhost:3001 will display the current production build.
+Changes will be reflected on save, as it reloads on save using Nodemon.
+
+## DEPLOY
 
 # HEROKU
 
