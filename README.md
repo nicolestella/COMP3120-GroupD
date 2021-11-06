@@ -23,7 +23,7 @@ This website has the following packages installed:
 
 ## APPLICATION OUTLINE
 
-The application is essentailly a service that allows users to follow and keep up to date with the latest and popular movies. Users are allowed to login with their details via third party authentication services. Once logged in, the user can add movies to their watchlist and keep track of all the movies that has been watched and waiting to be watched. Each movie has their respective details page with displays all the necessary information about the movie such as duration time, release date, languages etc. Also as a logged in user, you are able to leave reviews to a movie if you wish to do so. The application consists of three different pages HomePage, ProfilePage and MovieDetailsPage.
+The application is essentailly a service that allows users to follow and keep up to date with the latest and popular movies. Users are allowed to login with their details via third party authentication services. Once logged in, the user can add movies to their watchlist and keep track of all the movies that has been watched, and when the user marks a movie as watched, they have to give the movie a rating and review. Each movie has their respective details page with displays all the necessary information about the movie such as duration time, release date, languages etc. The application consists of three different pages: HomePage, ProfilePage and MovieDetailsPage.
 
 #### HomePage
 
@@ -31,11 +31,11 @@ The HomePage displays all the movies in the database in a tile format. On each o
 
 #### ProfilePage
 
-The ProfilePage is where the logged in user keeps track of their movies list, however it is quite similar to the Homepage in terms of the format display of movie cards. The list here is created by the user when adding movies to their watchlist. Once the movie is added to the watchlist, all other functionality works the same as the Homepage
+The ProfilePage is where the logged in user keeps track of their movies list. It is quite similar to the Homepage in terms of the format display of movie cards. The list here is created by the user when adding movies to their watchlist. Once the movie is added to the watchlist, all other functionality works the same as the Homepage
 
 #### MovieDetailsPage
 
-On the MovieDetailsPage, all information that is related to the movie is displayed here such as the synopsis and genre. If the user wants to know more detail about a particular movie, this page will have most necessary information. The user can also view the production staff and actors/actresses featured in the movie, with a search functionality that filters by their name. A logged in user can leave reviews for the movie here on this page, allowing ratings with comments to be displayed in the reviews section.
+On the MovieDetailsPage, all information that is related to the movie is displayed here such as the synopsis and genre. If the user wants to know more details about a particular movie, this page will have the necessary information, such as the production staff and actors/actresses featured in the movie, with a search functionality that filters by their name. A logged in user can leave reviews for the movie from this page, allowing ratings with comments to be displayed in the reviews section.
 
 ## MVP IMPLEMENTATION
 
@@ -49,8 +49,8 @@ API (MovieDB). Additionally we wanted the user to be able to check off the movie
 which would allow them to get a more concise view of all the top rated movies they've yet to see.
 Each movie has its own details page which contains more info about the film including the genre, cast, crew, and reviews
 
-#### Rating and Reviewing movies youve watched:
-Once a user has watched a movie they can leave a rating out of 10 and a review of the movie. These reviews are left
+#### Rating and Reviewing movies you've watched:
+Once a user has watched a movie they can leave a rating out of 5 and a review of the movie. These reviews are left
 in the users name so you can go back to a movie youve seen and look at how your opinion stacks against other
 watchers. We also aggregate all the ratings into one so anyone can see the general concensus of public opinion
 
@@ -164,13 +164,25 @@ All Pages have the navigation bar containing a link to the HomePage, a Search Ba
 
 ## FUTURE IMPLEMENTATIONS
 
-This application has the potential to grow into a much larger web service with the possibility of many more features to implement. The other main idea was to include not just movies but also TV shows, which will require some method or identification to distinguish from movies. Another useful feature to implement would be trailer clips from youtube, embedded in each of the details page so that the user can directly watch the trailer from the website. Further styling to the profile page can also be necessary such as allowing the user to create a profile picture and a notifications system that alerts the user for new movies/shows added to the database. The main database that stores the movies can be updated monthly so that the latest movies can be displayed. Furthermore, we can display another list of movies sorted by the rating, indicating its popularity. It would also be useful to the user if there are direct links or information about where to stream these services. In terms of filtering, the ability to filter movies based on other categories such as genre would be useful if a user is interested in a few genres only. Also, we the application can include a recommendation system that suggests similar type of movies/shows the user has in their custom list.
+This application has the potential to grow into a much larger web service with the possibility of many more features to implement. 
+- TV Shows  
+The other main idea was to include not just movies but also TV shows, which will require some method or identification to distinguish from movies. 
+- Trailer clips  
+Another useful feature to implement would be trailer clips from youtube, embedded in each of the details page so that the user can directly watch the trailer from the website. 
+- Extending profile page functionality  
+Further styling to the profile page can also be necessary such as allowing the user to create a profile picture and a notifications system that alerts the user for new movies/shows added to the database. 
+- Extending movie-related functionality  
+The main database that stores the movies can be updated monthly so that the latest movies can be displayed. Furthermore, we can display another list of movies sorted by the rating, indicating its popularity. It would also be useful to the user if there are direct links or information about where to stream these services. In terms of filtering, the ability to filter movies based on other categories such as genre would be useful if a user is interested in a few genres only. Also, the application can include a recommendation system that suggests similar type of movies/shows the user has in their custom list.
+- Removing items from the watched list  
+It would be useful to implement a feature that can allow users to remove items from the watchlist in the future.
+- Movie playlists  
+An idea that the team had for a future implementation is a feature that can allow users to create custom lists of watched movies, similar to how a music playlist works on apps like Spotify.
  
 ## PROJECT MANAGEMENT
 
 In this project we used a few tools to stay on top of development.
 
-For communication we used a discord group chat to stay in touch and talk to other group members about what we were doing and if any of us needed assistance or opinions on how certain parts of the project should work. We also had weekly discord calls so we could communicate verbally for more in-depth discussion.
+For communication we used a discord group chat to stay in touch and talk to other group members about what we were doing, or if any of us needed assistance or opinions on how certain parts of the project should work. We also had weekly discord calls so we could communicate verbally for more in-depth discussion.
 
 We used Google Docs to construct our project proposal, where we all contributed to parts of it and could access it from our own workstations. Google Sheets was used so that we could have a scheduling and work allocation table which was able to be updated with the progress of each team member on their task.
 
@@ -178,7 +190,7 @@ GitHub was also used as a code repository tool where the project was hosted on a
 
 ### Roles and tasks completed:
 
-```Nicole Stella```: Front end developer and page designer
+```Nicole Stella```: Front end developer and UI/UX designer
 Finalising page designs and element positioning
 Front end implementation of Home page, Profile page and MovieDetailsPage
 Material UI refactoring
