@@ -1,4 +1,4 @@
-# Group D 
+# Group D (D-List)
 
 * Nicole Stella 44008724
 * Juyoung Lee 45259666
@@ -164,6 +164,8 @@ All Pages have the navigation bar containing a link to the HomePage, a Search Ba
 
 ## FUTURE IMPLEMENTATIONS
 
+This application has the potential to grow into a much larger web service with the possibility of many more features to implement. The other main idea was to include not just movies but also TV shows, which will require some method or identification to distinguish from movies. Another useful feature to implement would be trailer clips from youtube, embedded in each of the details page so that the user can directly watch the trailer from the website. Further styling to the profile page can also be necessary such as allowing the user to create a profile picture and a notifications system that alerts the user for new movies/shows added to the database. The main database that stores the movies can be updated monthly so that the latest movies can be displayed. Furthermore, we can display another list of movies sorted by the rating, indicating its popularity. It would also be useful to the user if there are direct links or information about where to stream these services. In terms of filtering, the ability to filter movies based on other categories such as genre would be useful if a user is interested in a few genres only. Also, we the application can include a recommendation system that suggests similar type of movies/shows the user has in their custom list.
+ 
 ## PROJECT MANAGEMENT
 
 In this project we used a few tools to stay on top of development.
