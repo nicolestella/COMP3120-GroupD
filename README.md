@@ -23,19 +23,7 @@ This website has the following packages installed:
 
 ## APPLICATION OUTLINE
 
-The application is essentailly a service that allows users to follow and keep up to date with the latest and popular movies. Users are allowed to login with their details via third party authentication services. Once logged in, the user can add movies to their watchlist and keep track of all the movies that has been watched, and when the user marks a movie as watched, they have to give the movie a rating and review. Each movie has their respective details page with displays all the necessary information about the movie such as duration time, release date, languages etc. The application consists of three different pages: HomePage, ProfilePage and MovieDetailsPage.
-
-#### HomePage
-
-The HomePage displays all the movies in the database in a tile format. On each of these tiles, the movie poster is displayed on the card which is clickable, navigating the user to the details page for that movie. On the top of the screen is the AppBar which consists of the application title, search bar, login button and dark mode functionalities. On the card, there is also the button to add the movie to the watchlist if you are logged in. The search bar matches each character input to the movie title and displays the results in a dropdown list. Each list display the smaller version of the movie poster so it is easier for the user to refer to the movie. Each list iten is also clickable, navigating the user to the details page of that movie.
-
-#### ProfilePage
-
-The ProfilePage is where the logged in user keeps track of their movies list. It is quite similar to the Homepage in terms of the format display of movie cards. The list here is created by the user when adding movies to their watchlist. Once the movie is added to the watchlist, all other functionality works the same as the Homepage
-
-#### MovieDetailsPage
-
-On the MovieDetailsPage, all information that is related to the movie is displayed here such as the synopsis and genre. If the user wants to know more details about a particular movie, this page will have the necessary information, such as the production staff and actors/actresses featured in the movie, with a search functionality that filters by their name. A logged in user can leave reviews for the movie from this page, allowing ratings with comments to be displayed in the reviews section.
+The application is essentailly a service that allows users to follow and keep up to date with the latest and popular movies. Users are allowed to login with their details via third party authentication services. Once logged in, the user can add movies to their watchlist and keep track of all the movies that has been watched. An logged in user can also leave ratings to particular movies, which will displayed in the reviews sections for that particular movie. Each movie has their respective details page with displays all the necessary information about the movie such as duration time, release date, languages etc. Initially, the team decided to use the API from IMDB, however subject to limited API calls using IMDB, we changed decisions and agreed to use MovieDB API as it didn't have a limitation on the number of API calls per day that would affect the application after deployment. Also, during early planning stages, we were aiming to build a similar service for TV shows, however move that requirement out of the MVP as we wanted to focus on the base minimum required functionalities of the application. The application's target users are for anyone that wants to keep track of top movies they have watched, get detail information about a movie or generally a cinephilia who loves reviewing movies. The application consists of three different pages: HomePage, ProfilePage and MovieDetailsPage.
 
 ## MVP IMPLEMENTATION
 
@@ -157,18 +145,24 @@ This service posts a review to a movie under the user with the corresponding use
 
 ## FUTURE IMPLEMENTATIONS
 
-This application has the potential to grow into a much larger web service with the possibility of many more features to implement. 
-- TV Shows  
+This application has the potential to grow into a much larger web service with the possibility of many more features to implement.
+
+```TV Shows```
 The other main idea was to include not just movies but also TV shows, which will require some method or identification to distinguish from movies. 
-- Trailer clips  
+
+```Trailer clips```  
 Another useful feature to implement would be trailer clips from youtube, embedded in each of the details page so that the user can directly watch the trailer from the website. 
-- Extending profile page functionality  
+
+```Extending profile page functionality```  
 Further styling to the profile page can also be necessary such as allowing the user to create a profile picture and a notifications system that alerts the user for new movies/shows added to the database. 
-- Extending movie-related functionality  
+
+```Extending movie-related functionality``` 
 The main database that stores the movies can be updated monthly so that the latest movies can be displayed. Furthermore, we can display another list of movies sorted by the rating, indicating its popularity. It would also be useful to the user if there are direct links or information about where to stream these services. In terms of filtering, the ability to filter movies based on other categories such as genre would be useful if a user is interested in a few genres only. Also, the application can include a recommendation system that suggests similar type of movies/shows the user has in their custom list.
-- Removing items from the watched list  
+
+```Removing items from the watched list```  
 It would be useful to implement a feature that can allow users to remove items from the watchlist in the future.
-- Movie playlists  
+
+```Movie playlists```  
 An idea that the team had for a future implementation is a feature that can allow users to create custom lists of watched movies, similar to how a music playlist works on apps like Spotify.
  
 ## PROJECT MANAGEMENT
