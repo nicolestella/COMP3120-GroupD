@@ -120,11 +120,11 @@ This is done so that some components can be easily reused or modified, and the p
 
 Another reason to separate the components is for pages such as the home page, where there is a grid of movie cards, it is much simpler to use the Javascript array functions such as `map()` when the movie cards are made into separate components.
 
-# SERVICES
+### SERVICES
 
 We constructed two service components to help the front end communicate with the API that we created, they are in the form of functions that the front end developer can call and will return with a responce that can be processed and displayed to the page.
 
-### Movies:
+**Movies:**  
 
 ```movies = ()```
 This service grabs all of the movies that are going to be in our database in a single JSON Object array
@@ -140,7 +140,7 @@ movieID and returns an object array similar to the service movies = ()
 ```movieCast = (movieid)```
 This service returns a JSON Object array of the cast and crew of the movie with the ID of movieID
 
-### Reviews:
+**Reviews:**  
 
 ```getMovieReviews = (movieid)```
 This service returns all of the ratings and reviews for the movie with ID of movieID and sends a responce containing
@@ -154,16 +154,6 @@ This service returns a JSON Object array containing all the movies that are in t
 
 ```postReview = (token, userid, movieid, rating, review)```
 This service posts a review to a movie under the user with the corresponding userID and movieID, it holds the rating, review and the token for authentication to post to the database.
-
-## PAGES
-
-All Pages have the navigation bar containing a link to the HomePage, a Search Bar, Login button and dark-mode button.
-
-* HomePage
-
-* MovieDetailsPage
-
-* ProfilePage
 
 ## FUTURE IMPLEMENTATIONS
 
