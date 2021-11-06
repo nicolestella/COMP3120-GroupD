@@ -58,7 +58,8 @@ watchers. We also aggregate all the ratings into one so anyone can see the gener
 A user can log into the app using a google account or a custom account which will unlock the ability
 to personalise your profile with a name and leave reviews and ratings on the movies you've viewed
 
-## API
+## SOURCE CODE GUIDE  
+### API
 
 The backend API is built with Express and implements GET, and POST in server/controller/api.js it uses CORS to manage cross-origin resource sharing.
 The data sent and received by the server is read and written from MongoDB.
@@ -82,7 +83,7 @@ If the user has a token, checks that there is a userid and a movieid then checks
 there already exist a watchlist for that user. If there isn't it creates a new entry in MongoDB otherwise it appends the { movieid, rating, review } onto
 the existing object. If a review already exist for that movie in the object then it returns an error.
 
-## Mongoose/MongoDB
+### Mongoose/MongoDB
 
 The backend uses Mongoose to access MongoDB
 MongoDB stores data on the users watchlist and their ratings and reviews
@@ -103,17 +104,19 @@ movieid is the id of the movie provided by MovieDB
 ratings is an Number between 0 and 10 (inclusive) representing the user's rating for the movieid of that item
 review is a String that contains the user's review for the movieid of that item
 
-## APP
+### FRONT-END
+
+The frontend of the application is built with ReactJS, and using a React UI library called Material-UI. There are a few other modules in use as well, namely axios, react-dom-router, and material-ui-image.
 
 App.js is the core of the website, it uses BrowserRouter from react-router-dom to "navigate" between "pages" stored in the pages folder and display them.
 BrowserRouter will navigate by changing the URL then generate a view according to that URL. The user State is stored here and when a distributed to other pages
 through props.
 
-## COMPONENTS
+### COMPONENTS
 
-The frontend of the application is built with ReactJS, and using a React UI library called Material-UI. There are a few other modules in use as well, namely axios, react-dom-router, and material-ui-image.
+For this project, we made components in a separate folder from the pages. We stored the components in the `components` folder, and we used them in the pages which are stored in the `pages` folder.
 
-For this project, we made components in a separate folder from the pages. This is done so that some components can be easily reused or modified, and the page files are easier to read and understand. For example, the `Layout` component is reused in every page. This helps to keep the pages consistent, and if future developers want to modify the page layout, such as change the website logo or add a footer component, this can be easily done by just changing `Layout.js`.
+This is done so that some components can be easily reused or modified, and the page files are easier to read and understand. For example, the `Layout` component is reused in every page. This helps to keep the pages consistent, and if future developers want to modify the page layout, such as change the website logo or add a footer component, this can be easily done by just changing `Layout.js`.
 
 Another reason to separate the components is for pages such as the home page, where there is a grid of movie cards, it is much simpler to use the Javascript array functions such as `map()` when the movie cards are made into separate components.
 
